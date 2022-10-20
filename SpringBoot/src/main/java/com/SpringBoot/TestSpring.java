@@ -7,9 +7,13 @@ public class TestSpring {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
                 "applicationContext.xml"
         ); //обращается в файлу application context  и перености данные в апликатион контекст
-        TestBean testBean = context.getBean("testBean", TestBean.class);
+        Music music = context.getBean("musicBean", Music.class);
 
-        System.out.println(testBean.getName());
+        System.out.println(music.getSong());
+
+        MusicPlayer musicPlayer = new MusicPlayer(music);
+
+        musicPlayer.playMusic();
 
         context.close();
     }
