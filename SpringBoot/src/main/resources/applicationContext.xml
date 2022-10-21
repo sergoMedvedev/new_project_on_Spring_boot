@@ -7,8 +7,20 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <context:property-placeholder location="classpath:musicPlayer.properties"/>
+
     <bean id="musicBean"
-          class="com.SpringBoot.JasMusic">
+          class="com.SpringBoot.RockMusic">
+    </bean>
+
+    <bean id="musicPlayer"
+            class="com.SpringBoot.MusicPlayer">
+        <property name="music" ref="musicBean"/>  <!--ссылка на тот бин, который мы хотим использовать в качествен зависимости-->
+
+        <property name="name" value="${musicPlayer.name}"/>
+        <property name="volume" value="${musicPlayer.volume}"/>
     </bean>
 
 </beans>
+
+        <!-- трег property - это тег который укакывает на сеттер   -->
